@@ -1,44 +1,55 @@
 // ADD YOUR ARRAY OF WORDS HERE
-var words = ["snowman", "christmas", "hot chocolate", "snowing", "candy canes", "cookies", "presents", "rudolph", "gingerbread", "north pole"];
+var words = ["SNOWMAN", "CHRISTMAS", "HOTCHOCOLATE", "SNOWING", "CANDYCANES", "COOKIES", "PRESENTS", "RUDOLPH", "GINGERBREAD", "NORTHPOLE"];
 var snowmanParts = [".hat", ".face", ".scarf", ".hands", ".body-top", ".body-middle", ".body-bottom"];
 var randomWord = getRandomWord(words);
 var keyboardContainer = document.querySelector('#keyboard-container');
+let replace = document.querySelector("#snowman-container");
 keyboardContainer.addEventListener("click", handleKeyboardClick);
 
 function checkForWinner(){
-    var hiddenLetterElements = document.querySelectorAll(".hidden"); 
-    if (hiddenLetterElements.length === 0){
+    let hiddenLetterElements = document.querySelectorAll(".hidden"); 
+    if (hiddenLetterElements.length == 0){
       keyboardContainer.innerHTML = "<h2>You Win!</h2>";
-    }
-  }
+    };
+  };
+
+
+
+
 
     function checkForLoser(){
-    if(snowmanParts.length === 0){
-      var replace = document.querySelector("#snowman-container");
+    let replace = document.querySelector("#snowman-container");
+    if(snowmanParts.length == 0){
       replace.innerHTML = "<h2>You lost, game over!</h2>";
-      keyboardContainer.innerHTML = "<h2>The word was:" + randomWord.value + "</h2>";
-    }
-  }
+      keyboardContainer.innerHTML = "<h2>The word was: " + randomWord.value + "</h2>";
+    };
+  };
+
+
+
+
+
 
 generateHiddenWord(randomWord);
 
 function handleKeyboardClick(event){
-  var clickedElement = event.target;
+  let clickedElement = event.target;
 
   if (!clickedElement.classList.contains("letter") || clickedElement.classList.contains("selected")) return;
 
   clickedElement.classList.add("selected");
   
-  var clickedLetter = clickedElement.textContent;
-  var hasMatch = checkForMatch(clickedLetter);
+  let clickedLetter = clickedElement.textContent;
+  let hasMatch = checkForMatch(clickedLetter);
 
 
   if (!hasMatch) {
-    // What function do we call?? 
-    checkForLoser();
+    // What function do we call??
+    removeSnowmanPart()
+    checkForLoser()
   } else {
     // What function do we call??
-    checkForWinner();
+    checkForWinner()
   }
 }
 
@@ -90,7 +101,6 @@ function getRandomWord(words) {
 }
 
 // CHECK FOR LOSER FUNCTION HERE
-console.log(handleKeyboardClick());
+
 
 // CHECK FOR WINNER FUNCTION HERE
-console.log(checkForWinner());
