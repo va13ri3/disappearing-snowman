@@ -21,7 +21,7 @@ function checkForWinner(){
     let replace = document.querySelector("#snowman-container");
     if(snowmanParts.length == 0){
       replace.innerHTML = "<h2>You lost, game over!</h2>";
-      keyboardContainer.innerHTML = "<h2>The word was: " + randomWord.value + "</h2>";
+      keyboardContainer.innerHTML = "<h2>The word was: " + randomWord + "</h2>";
     };
   };
 
